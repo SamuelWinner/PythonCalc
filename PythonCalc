@@ -1,0 +1,44 @@
+
+print("# My basic arithmetic calculator for multiple numbers")
+numbers = []
+while True:
+    try:
+        number = float(input("Enter a number: "))
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+        continue
+
+    numbers.append(number)
+
+    choice = input("Enter another number (Y) or perform an operation (N): ")
+    if choice.lower() != "y":
+        break
+
+if not numbers:
+    print("No numbers entered. Exiting.")
+else:
+    print("Numbers entered:", numbers)
+
+    while True:
+        operation = input("Choose an operation (A: add, S: subtract, M: multiply, D: divide): ").lower()
+
+        if operation == "a":
+            result = sum(numbers)
+            break
+        elif operation == "s":
+            result = numbers[0] - sum(numbers[1:])
+            break
+        elif operation == "m":
+            result = 1
+            for num in numbers:
+                result *= num
+            break
+        elif operation == "d":
+            result = numbers[0]
+            for num in numbers[1:]:
+                result /= num
+            break
+        else:
+            print("Invalid operation choice. Please choose a valid operation.")
+
+    print("Result:", result)
